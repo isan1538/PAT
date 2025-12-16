@@ -1,0 +1,18 @@
+{
+  "M": 200,
+  "steps": 1000,
+  "modes": [
+    1,
+    2,
+    3
+  ],
+  "nu": 0.1,
+  "timestamp": "2025-12-07T19:39:05.144588",
+  "methods": [
+    "pinn",
+    "siren",
+    "fno",
+    "deeponet",
+    "pat"
+  ]
+}

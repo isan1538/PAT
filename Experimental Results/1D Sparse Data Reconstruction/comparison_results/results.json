@@ -1,0 +1,42 @@
+[
+  {
+    "method": "PINN",
+    "mse": 0.10095,
+    "mae": 0.262,
+    "time": 12.145214319229126,
+    "success": true,
+    "error": null
+  },
+  {
+    "method": "SIREN",
+    "mse": 0.11353,
+    "mae": 0.27437,
+    "time": 19.939409971237183,
+    "success": true,
+    "error": null
+  },
+  {
+    "method": "FNO",
+    "mse": null,
+    "mae": null,
+    "time": 1.046187400817871,
+    "success": false,
+    "error": "Command '['python', 'fno_sparse.py', '--M', '200', '--steps', '1000', '--modes', '1', '2', '3', '--nu', '0.1', '--device', 'cuda', '--save_path', 'checkpoints/fno_M200.pt']' returned non-zero exit status 2."
+  },
+  {
+    "method": "PI-DeepONet",
+    "mse": 9.6433e-05,
+    "mae": 0.0066268,
+    "time": 12.845566749572754,
+    "success": true,
+    "error": null
+  },
+  {
+    "method": "PAT",
+    "mse": null,
+    "mae": null,
+    "time": 0.008064031600952148,
+    "success": false,
+    "error": "Command '['python', 'pat_train_sparse_corrected.py', '--M', '200', '--steps', '1000', '--modes', '1', '2', '3', '--nu', '0.1', '--device', 'cuda', '--save_path', 'checkpoints/pat_M200.pt', '--warmup_steps', '100']' returned non-zero exit status 2."
+  }
+]
