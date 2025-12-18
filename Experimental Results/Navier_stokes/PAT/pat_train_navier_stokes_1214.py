@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Claude:
+
 scatter plot changed to smooth countinues plot
 
 Run:
