@@ -8,14 +8,14 @@ Run:
 ###############################################################
 Method: Pure data-driven transformer without physics constraints
 ################################################################
-python pat_train_navier_stokes_improved.py --mode pure --eval_t_index 100 --n_train 2500 \
+python pat_train_navier_stokes_1228.py --mode pure --eval_t_index 100 --n_train 2500 \
   --steps 5000 --save_path checkpoints/pat_pure.pt \
   --out_dir checkpoints/pat_pure  
 
 ################################################################
   Method: Physics-Aware Transformer with PDE constraints and diffusion bias
 ################################################################
-python pat_train_navier_stokes_improved.py --mode physics --eval_t_index 100 --n_train 2500 \
+python pat_train_navier_stokes_1228.py --mode physics --eval_t_index 100 --n_train 2500 \
   --steps 5000 --save_path checkpoints/pat_physics.pt \
   --out_dir checkpoints/pat_physics
 
@@ -23,7 +23,7 @@ python pat_train_navier_stokes_improved.py --mode physics --eval_t_index 100 --n
 ################################################################
   Method: PAT with streamfunction formulation (like PINN)
 ################################################################
-python pat_train_navier_stokes_improved.py --mode streamfunction --eval_t_index 100 --n_train 2500 \
+python pat_train_navier_stokes_1228.py --mode streamfunction --eval_t_index 100 --n_train 2500 \
   --steps 5000 --save_path checkpoints/pat_streamfunction.pt \
   --out_dir checkpoints/pat_streamfunction
   

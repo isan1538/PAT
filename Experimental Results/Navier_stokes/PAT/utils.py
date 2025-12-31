@@ -372,7 +372,7 @@ def compute_additional_metrics(model, data, device, t_index, nu, mode='direct'):
     model.eval()
     
     # Get full snapshot
-    xyt_all, uvp_all = data.get_snapshot(t_index)
+    xyt_all, uvp_all = data.snapshot(t_index)
     N = xyt_all.shape[0]
     
     ctx_pos = to_device(xyt_all, device).unsqueeze(0)
