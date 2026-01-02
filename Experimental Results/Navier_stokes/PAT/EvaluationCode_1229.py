@@ -12,7 +12,7 @@ import torch
 import numpy as np
 
 from pat_model_1208 import PATConfig
-from your_training_file import (
+from pat_train_navier_stokes_1228 import (
     PATModelNS, 
     CylinderWakeData,
     compute_additional_metrics,

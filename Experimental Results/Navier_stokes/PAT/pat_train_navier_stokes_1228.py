@@ -8,9 +8,8 @@ Run:
 ###############################################################
 Method: Pure data-driven transformer without physics constraints
 ################################################################
-python pat_train_navier_stokes_1228.py --mode pure --eval_t_index 100 --n_train 2500 \
-  --steps 5000 --save_path checkpoints/pat_pure.pt \
-  --out_dir checkpoints/pat_pure  
+python pat_train_navier_stokes_1228.py --mode pure --eval_t_index 100 --n_train 2500 --steps 5000 --save_path checkpoints/pat_pure.pt --out_dir checkpoints/pat_pure  \
+--
 
 ################################################################
   Method: Physics-Aware Transformer with PDE constraints and diffusion bias
