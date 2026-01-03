@@ -5,7 +5,7 @@ SIREN for Navier-Stokes
 
 Sinusoidal Representation Networks that directly map (x,y,t) -> (u,v,p)
 
-python siren_navier_stokes.py --data_path ./cylinder_nektar_wake.mat \
+python siren_navier_stokes_1214.py --data_path ./cylinder_nektar_wake.mat \
   --device cuda --seed 0 --Re 100 --test_t_idx 100 --n_train 2500 \
   --n_colloc 5000 --hidden_dim 256 --n_layers 4 --omega_0 30.0 \
   --steps 1000 --lr 1e-4 --w_pde 1.0 --save_path checkpoints/siren_ns.pt
