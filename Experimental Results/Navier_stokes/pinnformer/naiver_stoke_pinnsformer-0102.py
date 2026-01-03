@@ -406,6 +406,28 @@ def evaluate_model(model, x_star, y_star, t_star, u_star, v_star, p_star):
     return u_pred, v_pred, p_pred, error_u, error_v, error_p
 
 
+def calculate_psnr(predictions, targets):
+    """
+    Calculate Peak Signal-to-Noise Ratio (PSNR)
+    
+    Args:
+        predictions: Predicted values
+        targets: Ground truth values
+    
+    Returns:
+        psnr: PSNR value in dB
+    """
+    mse = np.mean((predictions - targets) ** 2)
+    if mse == 0:
+        return float('inf')
+    
+    # Calculate max value from targets
+    max_val = np.max(np.abs(targets))
+    psnr = 20 * np.log10(max_val / np.sqrt(mse))
+    
+    return psnr
+
+
 # ==============================================================================
 # Visualization
 # ==============================================================================
@@ -602,7 +624,15 @@ def main():
         model, x_star, y_star, t_star, u_star, v_star, p_star
     )
     
+    # Calculate PSNR
+    psnr_u = calculate_psnr(u_pred, u_star)
+    psnr_v = calculate_psnr(v_pred, v_star)
+    psnr_p = calculate_psnr(p_pred, p_star)
+    
     # Print errors
+    print(f"\n{'='*60}")
+    print(f"EVALUATION RESULTS")
+    print(f"{'='*60}")
     print(f"\nRelative L2 Errors:")
     print(f"  u-velocity: {error_u:.6e}")
     print(f"  v-velocity: {error_v:.6e}")
@@ -611,6 +641,27 @@ def main():
     # Compute L1 error for pressure
     error_p_l1 = np.linalg.norm(p_star - p_pred, 1) / np.linalg.norm(p_star, 1)
     print(f"  pressure (L1): {error_p_l1:.6e}")
+    
+    print(f"\nPSNR (dB):")
+    print(f"  u-velocity: {psnr_u:.4f} dB")
+    print(f"  v-velocity: {psnr_v:.4f} dB")
+    print(f"  pressure:   {psnr_p:.4f} dB")
+    print(f"{'='*60}")
+    
+    # Save metrics
+    metrics = {
+        'error_u_l2': error_u,
+        'error_v_l2': error_v,
+        'error_p_l2': error_p,
+        'error_p_l1': error_p_l1,
+        'psnr_u': psnr_u,
+        'psnr_v': psnr_v,
+        'psnr_p': psnr_p,
+        'final_loss': loss_track[-1],
+        'n_params': n_params
+    }
+    np.save(f'{args.save_prefix}_metrics.npy', metrics)
+    print(f"\nMetrics saved to {args.save_prefix}_metrics.npy")
     
     # Plot results
     print("\nGenerating plots...")
